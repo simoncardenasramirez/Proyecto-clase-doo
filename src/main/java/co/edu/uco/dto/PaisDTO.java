@@ -3,6 +3,7 @@ package co.edu.uco.dto;
 import java.util.UUID;
 
 import co.edu.uco.crosscutting.TextHelper;
+import co.edu.uco.crosscutting.UUIDHelper;
 
 public final class PaisDTO {
 	private UUID id;

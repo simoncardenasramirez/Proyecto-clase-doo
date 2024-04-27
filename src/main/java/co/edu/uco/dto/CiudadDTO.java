@@ -2,6 +2,8 @@ package co.edu.uco.dto;
 
 import java.util.UUID;
 
+import co.edu.uco.crosscutting.TextHelper;
+
 public final class CiudadDTO {
 	private UUID id;
 	private String nombre;
@@ -35,7 +37,7 @@ public final class CiudadDTO {
 	}
 	
 	public CiudadDTO setNombre(final String nombre) {
-		this.nombre = nombre;
+		this.nombre = TextHelper.applyTrim(nombre);
 		return this;
 	}
 	
