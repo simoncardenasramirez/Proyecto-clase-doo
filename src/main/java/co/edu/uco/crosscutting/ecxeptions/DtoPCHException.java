@@ -8,7 +8,7 @@ public class DtoPCHException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	protected String mensajeUsuario;
-	protected Lugar lugar ;
+	protected Lugar lugar = Lugar.CROSSCUTTING ;
 	
 	public DtoPCHException(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
 		super(mensajeTecnico,excepcionRaiz);
@@ -21,6 +21,14 @@ public class DtoPCHException extends RuntimeException{
 		setMensajeUsuario(mensajeUsuario);
 		setLugar(lugar);
 	}
+	
+	
+	public DtoPCHException(final String mensajeTecnico, final String mensajeUsuario, final Lugar lugar ) {
+		super(mensajeUsuario, new Exception());
+		setMensajeUsuario(mensajeUsuario);
+		setLugar(lugar);
+	}
+
 
 	
 	public void setMensajeUsuario(String mensajeUsuario) {

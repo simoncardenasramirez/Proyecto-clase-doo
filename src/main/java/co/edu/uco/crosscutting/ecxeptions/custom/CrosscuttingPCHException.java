@@ -5,17 +5,18 @@ import co.edu.uco.crosscutting.ecxeptions.enums.Lugar;
 
 public final class CrosscuttingPCHException extends PCHException {
 
-	private static final long serialVersionUID = -1179319726524825522L;
+    private static final long serialVersionUID = 1L;
+    private static final Lugar lugar = Lugar.CROSSCUTTING;
 
-	public CrosscuttingPCHException(final String mensajeUsuario) {
-		super(mensajeUsuario, Lugar.DATA);
+    public CrosscuttingPCHException(final String mensajeUsuario) {
+        super(mensajeUsuario, lugar);
+    }
 
-	}
-	
-	public CrosscuttingPCHException(final String mensajeTecnico,final String mensajeUsuario,final  Lugar lugar,Throwable excepcionRaiz) {
-		super(mensajeTecnico,mensajeUsuario, Lugar.DATA,excepcionRaiz);
-
-	}
-	
+    public CrosscuttingPCHException(final String mensajeTecnico, final String mensajeUsuario) {
+        super(mensajeTecnico, mensajeUsuario, lugar);
+    }
+    public CrosscuttingPCHException(final String mensajeTecnico, final String mensajeUsuario, final Throwable excepcionRaiz) {
+        super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
+    }
 
 }

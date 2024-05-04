@@ -4,23 +4,31 @@ import co.edu.uco.crosscutting.ObjectHelper;
 import co.edu.uco.crosscutting.TextHelper;
 import co.edu.uco.crosscutting.ecxeptions.enums.Lugar;
 
-public class BusinessPCHException extends RuntimeException{
+public class BusinessPCHExcepcion extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	protected String mensajeUsuario;
-	protected Lugar lugar ;
+	protected Lugar lugar = Lugar.CROSSCUTTING ;
 	
-	public BusinessPCHException(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
+	public BusinessPCHExcepcion(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
 		super(mensajeTecnico,excepcionRaiz);
 		setMensajeUsuario(mensajeUsuario);
 		setLugar(lugar);
 	}
 	
-	public BusinessPCHException(final String mensajeUsuario, final Lugar lugar ) {
+	public BusinessPCHExcepcion(final String mensajeUsuario, final Lugar lugar ) {
 		super(mensajeUsuario, new Exception());
 		setMensajeUsuario(mensajeUsuario);
 		setLugar(lugar);
 	}
+	
+	
+	public BusinessPCHExcepcion(final String mensajeTecnico, final String mensajeUsuario, final Lugar lugar ) {
+		super(mensajeUsuario, new Exception());
+		setMensajeUsuario(mensajeUsuario);
+		setLugar(lugar);
+	}
+
 
 	
 	public void setMensajeUsuario(String mensajeUsuario) {

@@ -8,7 +8,7 @@ public class CrosscuttingPCHException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	protected String mensajeUsuario;
-	protected Lugar lugar ;
+	protected Lugar lugar = Lugar.CROSSCUTTING ;
 	
 	public CrosscuttingPCHException(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
 		super(mensajeTecnico,excepcionRaiz);
@@ -21,6 +21,14 @@ public class CrosscuttingPCHException extends RuntimeException{
 		setMensajeUsuario(mensajeUsuario);
 		setLugar(lugar);
 	}
+	
+	
+	public CrosscuttingPCHException(final String mensajeTecnico, final String mensajeUsuario, final Lugar lugar ) {
+		super(mensajeUsuario, new Exception());
+		setMensajeUsuario(mensajeUsuario);
+		setLugar(lugar);
+	}
+
 
 	
 	public void setMensajeUsuario(String mensajeUsuario) {

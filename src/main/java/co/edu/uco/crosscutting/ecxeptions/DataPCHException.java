@@ -8,7 +8,7 @@ public class DataPCHException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	protected String mensajeUsuario;
-	protected Lugar lugar ;
+	protected Lugar lugar = Lugar.CROSSCUTTING ;
 	
 	public DataPCHException(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
 		super(mensajeTecnico,excepcionRaiz);
@@ -21,6 +21,14 @@ public class DataPCHException extends RuntimeException{
 		setMensajeUsuario(mensajeUsuario);
 		setLugar(lugar);
 	}
+	
+	
+	public DataPCHException(final String mensajeTecnico, final String mensajeUsuario, final Lugar lugar ) {
+		super(mensajeUsuario, new Exception());
+		setMensajeUsuario(mensajeUsuario);
+		setLugar(lugar);
+	}
+
 
 	
 	public void setMensajeUsuario(String mensajeUsuario) {
