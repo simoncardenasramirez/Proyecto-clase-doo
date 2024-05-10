@@ -12,11 +12,15 @@ public final class CrosscuttingPCHException extends PCHException {
         super(mensajeUsuario, lugar);
     }
 
-    public CrosscuttingPCHException(final String mensajeTecnico, final String mensajeUsuario) {
-        super(mensajeTecnico, mensajeUsuario, lugar);
-    }
-    public CrosscuttingPCHException(final String mensajeTecnico, final String mensajeUsuario, final Throwable excepcionRaiz) {
-        super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
-    }
+    public CrosscuttingPCHException(final String mensajeTecnico,final String mensajeUsuario) {
+		super(mensajeTecnico,mensajeUsuario, lugar);
 
+	}
+	
+	public CrosscuttingPCHException(final String mensajeTecnico,final String mensajeUsuario,final  Lugar lugar,Throwable excepcionRaiz) {
+		super(mensajeTecnico,mensajeUsuario, lugar,excepcionRaiz);
+
+	}
+    
+    
 }
