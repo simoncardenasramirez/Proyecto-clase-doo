@@ -1,60 +1,24 @@
 package co.edu.uco.crosscutting.ecxeptions;
 
-import co.edu.uco.crosscutting.ObjectHelper;
-import co.edu.uco.crosscutting.TextHelper;
 import co.edu.uco.crosscutting.ecxeptions.enums.Lugar;
 
-public class DataPCHException extends RuntimeException{
+public final class DataPCHException extends PCHException{
 
 	private static final long serialVersionUID = 1L;
-	protected String mensajeUsuario;
-	protected Lugar lugar = Lugar.CROSSCUTTING ;
-	
-	public DataPCHException(String mensajeTecnico, String mensajeUsuario,Lugar lugar, Throwable excepcionRaiz ) {
-		super(mensajeTecnico,excepcionRaiz);
-		setMensajeUsuario(mensajeUsuario);
-		setLugar(lugar);
+	private static final Lugar lugar=Lugar.DATA;
+
+	public DataPCHException(final String mensajeUsuario) {
+		super(mensajeUsuario, lugar );
 	}
 	
-	public DataPCHException(final String mensajeUsuario, final Lugar lugar ) {
-		super(mensajeUsuario, new Exception());
-		setMensajeUsuario(mensajeUsuario);
-		setLugar(lugar);
+	public DataPCHException(final String mensajeTecnico, 
+			final String mensajeUsuario) {
+		super(mensajeTecnico, mensajeUsuario, lugar);
 	}
 	
-	
-	public DataPCHException(final String mensajeTecnico, final String mensajeUsuario, final Lugar lugar ) {
-		super(mensajeUsuario, new Exception());
-		setMensajeUsuario(mensajeUsuario);
-		setLugar(lugar);
-	}
-
-
-	
-	public void setMensajeUsuario(String mensajeUsuario) {
-		this.mensajeUsuario = TextHelper.applyTrim(mensajeUsuario);
+	public DataPCHException(final String mensajeTecnico,final String mensajeUsuario,
+			final Throwable exceptionRaiz) {
+		super(mensajeTecnico,mensajeUsuario, lugar, exceptionRaiz);
 	}
 	
-	private final void setLugar(final Lugar lugar) {
-		this.lugar = ObjectHelper.getObjectHelper().getDefaultValue(lugar, lugar.DEFAULT);
-	}
-
-	public Lugar getLugar() {
-		return lugar;
-	}
-
-	public String getMensajeUsuario() {
-		return mensajeUsuario;
-	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-
-
 }
