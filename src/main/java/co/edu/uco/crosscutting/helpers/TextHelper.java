@@ -1,5 +1,4 @@
-package co.edu.uco.crosscutting;
-
+package co.edu.uco.crosscutting.helpers;
 
 public final class TextHelper {
 	

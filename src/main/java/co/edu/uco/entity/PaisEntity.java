@@ -2,8 +2,8 @@ package co.edu.uco.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.TextHelper;
-import co.edu.uco.crosscutting.UUIDHelper;
+import co.edu.uco.crosscutting.helpers.TextHelper;
+
 
 public final class PaisEntity {
 	private UUID id;

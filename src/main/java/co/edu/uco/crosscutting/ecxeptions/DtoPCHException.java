@@ -1,8 +1,8 @@
 package co.edu.uco.crosscutting.ecxeptions;
 
-import co.edu.uco.crosscutting.ObjectHelper;
-import co.edu.uco.crosscutting.TextHelper;
 import co.edu.uco.crosscutting.ecxeptions.enums.Lugar;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.crosscutting.helpers.TextHelper;
 
 public class DtoPCHException extends RuntimeException{
 
@@ -36,7 +36,7 @@ public class DtoPCHException extends RuntimeException{
 	}
 	
 	private final void setLugar(final Lugar lugar) {
-		this.lugar = ObjectHelper.getObjectHelper().getDefaultValue(lugar, lugar.DEFAULT);
+		this.lugar = ObjectHelper.getObjectHelper().getDefaultValue(lugar, Lugar.DEFAULT);
 	}
 
 	public Lugar getLugar() {

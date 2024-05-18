@@ -1,7 +1,7 @@
 package co.edu.uco.crosscutting.ecxeptions.messageCatalog.data;
 
-import static co.edu.uco.crosscutting.TextHelper.concatenate;
-import static co.edu.uco.crosscutting.TextHelper.UNDERLINE;
+import static co.edu.uco.crosscutting.helpers.TextHelper.UNDERLINE;
+import static co.edu.uco.crosscutting.helpers.TextHelper.concatenate;
 
 public enum CodigoMensaje {
 	
@@ -26,7 +26,8 @@ public enum CodigoMensaje {
 	M00019(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00019", true),
 	M00020(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00020", true),
 	M00021(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00021", true),
-	M00022(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00022", true);
+	M00022(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00022", true),
+	M00023(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "00022", true);
 	
 	
 	private TipoMensaje tipo;

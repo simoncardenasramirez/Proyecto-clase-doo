@@ -3,11 +3,11 @@ package co.edu.uco.crosscutting.ecxeptions.messageCatalog.implement;
 import java.util.HashMap;
 import java.util.Map;
 
-import co.edu.uco.crosscutting.ObjectHelper;
 import co.edu.uco.crosscutting.ecxeptions.custom.CrosscuttingPCHException;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalog;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.Mensaje;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
 public final class MessageCatalogBase implements MessageCatalog {
 	
 	private final Map<String,Mensaje> mensajes = new HashMap<>();
@@ -62,6 +62,8 @@ public final class MessageCatalogBase implements MessageCatalog {
 				"Se ha presentado un problema tratando de iniciar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00022.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
 				"Se ha presentado un problema INESPERADO tratando de iniciar una transacción SQL con la fuente de información deseada..."));
+		mensajes.put(CodigoMensaje.M00023.getIdentificador(), new Mensaje(CodigoMensaje.M00023,
+				"Se ha presentado un problema tratando de crear la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador..."));
 		
 	}
 

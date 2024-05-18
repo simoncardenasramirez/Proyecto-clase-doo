@@ -3,7 +3,7 @@ package co.edu.uco.data.dao.factory.concrete;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import co.edu.uco.crosscutting.SQLHelper;
+import co.edu.uco.crosscutting.helpers.SQLHelper;
 import co.edu.uco.data.dao.entity.CiudadDAO;
 import co.edu.uco.data.dao.entity.DepartamentoDAO;
 import co.edu.uco.data.dao.entity.PaisDAO;

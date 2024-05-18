@@ -1,8 +1,8 @@
 package co.edu.uco.crosscutting.ecxeptions;
 
-import co.edu.uco.crosscutting.ObjectHelper;
-import co.edu.uco.crosscutting.TextHelper;
 import co.edu.uco.crosscutting.ecxeptions.enums.Lugar;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.crosscutting.helpers.TextHelper;
 
 public class PCHException extends RuntimeException{
 

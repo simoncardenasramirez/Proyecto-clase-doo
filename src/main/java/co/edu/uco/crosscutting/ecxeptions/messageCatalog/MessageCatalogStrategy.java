@@ -1,11 +1,11 @@
 package co.edu.uco.crosscutting.ecxeptions.messageCatalog;
 
-import co.edu.uco.crosscutting.ObjectHelper;
 import co.edu.uco.crosscutting.ecxeptions.custom.CrosscuttingPCHException;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.Mensaje;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.implement.MessageCatalogBase;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.implement.MessageCatalogExternalService;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
 
 public final class MessageCatalogStrategy {
 	

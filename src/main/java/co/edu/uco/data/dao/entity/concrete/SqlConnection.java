@@ -2,10 +2,10 @@ package co.edu.uco.data.dao.entity.concrete;
 
 import java.sql.Connection;
 
-import co.edu.uco.crosscutting.SQLHelper;
 import co.edu.uco.crosscutting.ecxeptions.DataPCHException;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
+import co.edu.uco.crosscutting.helpers.SQLHelper;
 
 public  class SqlConnection {
 	

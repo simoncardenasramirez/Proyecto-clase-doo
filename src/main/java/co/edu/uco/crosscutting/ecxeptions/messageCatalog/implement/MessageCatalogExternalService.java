@@ -3,14 +3,13 @@ package co.edu.uco.crosscutting.ecxeptions.messageCatalog.implement;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.logging.log4j.message.MapMessage;
 
-import co.edu.uco.crosscutting.ObjectHelper;
 import co.edu.uco.crosscutting.ecxeptions.custom.CrosscuttingPCHException;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalog;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.Mensaje;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
 
 
 public final class MessageCatalogExternalService implements MessageCatalog {

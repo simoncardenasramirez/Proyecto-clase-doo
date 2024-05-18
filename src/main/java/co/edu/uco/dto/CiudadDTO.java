@@ -2,7 +2,7 @@ package co.edu.uco.dto;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.TextHelper;
+import co.edu.uco.crosscutting.helpers.TextHelper;
 
 public final class CiudadDTO {
 	private UUID id;

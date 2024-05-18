@@ -2,8 +2,8 @@ package co.edu.uco.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.ObjectHelper;
-import co.edu.uco.crosscutting.TextHelper;
+
+import co.edu.uco.crosscutting.helpers.TextHelper;
 
 public final class DepartamentoEntity {
 	private UUID id;
@@ -15,43 +15,36 @@ public final class DepartamentoEntity {
 	}
 	
 	public DepartamentoEntity(final UUID id, final String nombre, final PaisEntity pais) {
-		setId(id);
-		setNombre(nombre);
-		setPais(pais);
+		super();
+		setId (id);
+		setNombre (nombre);
+		setPais  (pais);
 	}
 	
-	public static final CiudadEntity build() {
-		return new CiudadEntity();
+	public static final DepartamentoEntity build() {
+		return new DepartamentoEntity();
 	}
-
-	public UUID getId() {
+	public final UUID getId() {
 		return id;
 	}
-	
-	public DepartamentoEntity setId(final UUID id) {
+	public final DepartamentoEntity setId(final UUID id) {
 		this.id = id;
 		return this;
 	}
-	
-	public String getNombre() {
+	public final String getNombre() {
 		return nombre;
 	}
-	
-	public DepartamentoEntity setNombre(final String nombre) {
+	public final  DepartamentoEntity setNombre(final String nombre) {
 		this.nombre = TextHelper.applyTrim(nombre);
 		return this;
 	}
-	
-	public PaisEntity getPais() {
+	public final PaisEntity getPais() {
 		return pais;
 	}
-	
-	public DepartamentoEntity setPais(final PaisEntity pais) {
+	public final  DepartamentoEntity setPais(final PaisEntity pais) {
 		this.pais = pais;
 		return this;
 	}
-	
-	
 	
 }
 

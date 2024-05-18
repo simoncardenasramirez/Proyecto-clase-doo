@@ -2,8 +2,8 @@ package co.edu.uco.dto;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.ObjectHelper;
-import co.edu.uco.crosscutting.TextHelper;
+
+import co.edu.uco.crosscutting.helpers.TextHelper;
 
 public final class DepartamentoDTO {
 	private UUID id;
@@ -15,42 +15,36 @@ public final class DepartamentoDTO {
 	}
 	
 	public DepartamentoDTO(final UUID id, final String nombre, final PaisDTO pais) {
-		setId(id);
-		setNombre(nombre);
-		setPais(pais);
+		super();
+		setId (id);
+		setNombre (nombre);
+		setPais  (pais);
 	}
 	
-	public static final CiudadDTO build() {
-		return new CiudadDTO();
+	public static final DepartamentoDTO build() {
+		return new DepartamentoDTO();
 	}
-
-	public UUID getId() {
+	public final UUID getId() {
 		return id;
 	}
-	
-	public DepartamentoDTO setId(final UUID id) {
+	public final DepartamentoDTO setId(final UUID id) {
 		this.id = id;
 		return this;
 	}
-	
-	public String getNombre() {
+	public final String getNombre() {
 		return nombre;
 	}
-	
-	public DepartamentoDTO setNombre(final String nombre) {
+	public final  DepartamentoDTO setNombre(final String nombre) {
 		this.nombre = TextHelper.applyTrim(nombre);
 		return this;
 	}
-	
-	public PaisDTO getPais() {
+	public final PaisDTO getPais() {
 		return pais;
 	}
-	
-	public DepartamentoDTO setPais(final PaisDTO pais) {
+	public final  DepartamentoDTO setPais(final PaisDTO pais) {
 		this.pais = pais;
 		return this;
 	}
-	
 	
 	
 }
