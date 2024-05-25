@@ -7,33 +7,32 @@ import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.crosscutting.helpers.SQLHelper;
 
-public  class SqlConnection {
-	
-	protected  Connection conexion;
-	
-	protected SqlConnection() {
-		super();
-	}
-	
+public class SqlConnection {
+
+	private Connection conexion;
+
 	protected SqlConnection(final Connection conexion) {
 		setConexion(conexion);
+	}
+
+	protected SqlConnection() {
+		super();
 	}
 
 	protected final Connection getConexion() {
 		return conexion;
 	}
-	
+
 	protected final void setConexion(final Connection conexion) {
-		
-		if(!SQLHelper.isOpen(conexion)) {
-			var mensajeUsaurio = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
-			var mensajeTecnico = "No es posible crear el DAO deseado con la coneccion cerrada";
-			
-			throw new DataPCHException(mensajeTecnico, mensajeUsaurio);
+
+		if (!SQLHelper.isOpen(conexion)) {
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
+			var MensajeTecnico = "No es posible crear el DAO deseado con una conexion cerrada";
+
+			throw new DataPCHException(mensajeUsuario, MensajeTecnico);
 		}
-		
-		this.conexion=conexion;
+
+		this.conexion = conexion;
 	}
-	
-	
+
 }

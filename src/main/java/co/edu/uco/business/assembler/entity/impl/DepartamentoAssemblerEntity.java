@@ -4,6 +4,9 @@ import co.edu.uco.business.assembler.entity.AssemblerEntity;
 import co.edu.uco.business.domain.DepartamentoDomain;
 import co.edu.uco.business.domain.PaisDomain;
 import static co.edu.uco.crosscutting.helpers.ObjectHelper.getObjectHelper;
+
+import java.util.List;
+
 import co.edu.uco.entity.DepartamentoEntity;
 import co.edu.uco.entity.PaisEntity;
 
@@ -29,6 +32,12 @@ public class DepartamentoAssemblerEntity implements  AssemblerEntity<Departament
 		var departamentoDomainTmp = getObjectHelper().getDefaultValue(domain, DepartamentoDomain.build());
 		var paisEntity = paisAssembler.toEntity(departamentoDomainTmp.getPais());
 		return DepartamentoEntity.build().setId(departamentoDomainTmp.getId()).setNombre(departamentoDomainTmp.getNombre()).setPais(paisEntity);
+	}
+
+	@Override
+	public List<DepartamentoDomain> toDomainCollection(List<DepartamentoEntity> entityCollection) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

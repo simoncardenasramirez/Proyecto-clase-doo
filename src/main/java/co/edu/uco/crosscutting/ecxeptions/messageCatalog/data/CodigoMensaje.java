@@ -78,9 +78,7 @@ public enum CodigoMensaje {
 	}
 
 	
-	public static void main(String[] args) {
-		System.out.println(M00001.getIdentificador());	
-	}
+	
 	
 	
 }
