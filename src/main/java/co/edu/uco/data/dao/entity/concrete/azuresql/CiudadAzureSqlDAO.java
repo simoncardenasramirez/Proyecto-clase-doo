@@ -17,120 +17,116 @@ import co.edu.uco.data.dao.entity.CiudadDAO;
 import co.edu.uco.data.dao.entity.concrete.SqlConnection;
 import co.edu.uco.entity.CiudadEntity;
 import co.edu.uco.entity.DepartamentoEntity;
+import co.edu.uco.entity.PaisEntity;
 
-public final class CiudadAzureSqlDAO extends SqlConnection implements CiudadDAO{
+public final class CiudadAzureSqlDAO extends SqlConnection implements CiudadDAO {
 
 	public CiudadAzureSqlDAO(final Connection conexion) {
 		super(conexion);
 	}
 
-	@Override
 	public void crear(CiudadEntity data) {
 		final StringBuilder sentenciaSql = new StringBuilder();
-		
-		
+
 		sentenciaSql.append("INSERT INTO Ciudad (id, nombre, departamento) ");
 		sentenciaSql.append("SELECT ?, ?, ?");
-		
-		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())){
-			
+
+		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+
 			sentenciaSqlPreparada.setObject(1, data.getId());
 			sentenciaSqlPreparada.setString(2, data.getNombre());
 			sentenciaSqlPreparada.setObject(3, data.getDepartamento().getId());
-			
+
 			sentenciaSqlPreparada.executeUpdate();
-			
+
 		} catch (final SQLException exception) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00023);
 			var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el insert de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-			
+
 			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-			
-		}catch (final Exception exception) {
-			
+
+		} catch (final Exception exception) {
+
 			var mensajeUsuario = "Se ha presentado un problema tratando de crear la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
 			var mensajeTecnico = "Se ha presentado un problema INESPERADO con una excepcion  de tipo SQLException tratando de realizar el insert de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-			
+
 			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-			
+
 		}
-		
+
 	}
 
-	
-	
-	@Override
 	public void modificar(CiudadEntity data) {
-		
-final StringBuilder sentenciaSql = new StringBuilder();
-		
-		
+
+		final StringBuilder sentenciaSql = new StringBuilder();
+
 		sentenciaSql.append("UPDATE Ciudad SET nombre= ?,departamento= ? WHERE id= ?");
-		
-		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())){
-			
+
+		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
+
 			sentenciaSqlPreparada.setObject(3, data.getId());
 			sentenciaSqlPreparada.setString(1, data.getNombre());
 			sentenciaSqlPreparada.setObject(2, data.getDepartamento().getId());
-			
+
 			sentenciaSqlPreparada.executeUpdate();
-			
+
 		} catch (final SQLException exception) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00023);
 			var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el insert de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-			
+
 			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-			
-		}catch (final Exception exception) {
-			
+
+		} catch (final Exception exception) {
+
 			var mensajeUsuario = "Se ha presentado un problema tratando de crear la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
 			var mensajeTecnico = "Se ha presentado un problema INESPERADO con una excepcion  de tipo SQLException tratando de realizar el insert de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-			
+
 			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-			
+
 		}
-		
-		
+
 	}
 
-	@Override
 	public void eliminar(UUID id) {
 		final StringBuilder sentenciaSql = new StringBuilder();
-		
-		
+
 		sentenciaSql.append("DELETE FROM Ciudad WHERE id = ? ");
-		
-		try  (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())){
+
+		try (final PreparedStatement sentenciaSqlPreparada = getConexion().prepareStatement(sentenciaSql.toString())) {
 			sentenciaSqlPreparada.setObject(1, id);
-			
+
 			sentenciaSqlPreparada.executeUpdate();
-			
-			
-			} catch (final SQLException exception) {
-				var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
-				var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el delete de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-				
-				throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-				
-			}catch (final Exception exception) {
-				
-				var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
-				var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el delete de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
-				
-				throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
-				
-			}
-			
-		
+
+		} catch (final SQLException exception) {
+			var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
+			var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el delete de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
+
+			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
+
+		} catch (final Exception exception) {
+
+			var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la ciudad \"${1}\".Por favor intente de nuevo y si el problema persiste contacte con el administrador...";
+			var mensajeTecnico = "Se ha presentado una excepcion de tipo SQLException tratando de realizar el delete de la ciudad \"${1}\" en la tabla \"Pais\" de la base de datos Azure SQL. Para mas detalles, revise de forma completa la excepcion raiz presentada..";
+
+			throw new DataPCHException(mensajeTecnico, mensajeUsuario, exception);
+
+		}
+
 	}
 
-	@Override
 	public List<CiudadEntity> consultar(CiudadEntity data) {
 		
 		
 		
 		final StringBuilder sentenciaSql = new StringBuilder();
-	    sentenciaSql.append("SELECT id, nombre, departamento FROM Ciudad WHERE 1=1");
+		sentenciaSql.append("SELECT ciudad.id AS ciudad_id, ciudad.nombre AS nombre_ciudad, ");
+		sentenciaSql.append("departamento.id AS departamento_id, departamento.nombre AS nombre_departamento, ");
+		sentenciaSql.append("pais.id AS pais_id, pais.nombre AS nombre_pais ");
+		sentenciaSql.append("FROM Ciudad ciudad ");
+		sentenciaSql.append("INNER JOIN Departamento departamento ON ciudad.departamento = departamento.id ");
+		sentenciaSql.append("INNER JOIN Pais pais ON departamento.pais = pais.id ");
+		sentenciaSql.append("WHERE id=1");
+
 
 	    final List<Object> parametros = new ArrayList<>();
 
@@ -157,13 +153,16 @@ final StringBuilder sentenciaSql = new StringBuilder();
 
 	        try (final ResultSet resultado = sentenciaSqlPreparada.executeQuery()) {
 	            while (resultado.next()) {
-	                CiudadEntity ciudad = new CiudadEntity();
-	                ciudad.setId((UUID) resultado.getObject("id"));
-	                ciudad.setNombre(resultado.getString("nombre"));
-	                DepartamentoEntity departamento = new DepartamentoEntity();
-	                departamento.setId((UUID) resultado.getObject("departamento"));
-	                ciudad.setDepartamento(departamento);
-	                ciudades.add(ciudad);
+	            	CiudadEntity ciudad = new CiudadEntity();
+                    ciudad.setId((UUID) resultado.getObject("id"));
+                    ciudad.setNombre(resultado.getString("nombre_ciudad"));
+                    DepartamentoEntity departamento = new DepartamentoEntity();
+                    departamento.setNombre(resultado.getString("nombre_departamento"));
+                    PaisEntity pais = new PaisEntity();
+                    pais.setNombre(resultado.getString("nombre_pais"));
+                    departamento.setPais(pais);
+                    ciudad.setDepartamento(departamento);
+                    ciudades.add(ciudad);
 	            }
 	        }
 	        

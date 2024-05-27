@@ -3,9 +3,13 @@ package co.edu.uco.business.assembler.entity.impl;
 import co.edu.uco.business.assembler.entity.AssemblerEntity;
 import co.edu.uco.business.domain.DepartamentoDomain;
 import co.edu.uco.business.domain.PaisDomain;
+import co.edu.uco.crosscutting.helpers.ObjectHelper;
+
 import static co.edu.uco.crosscutting.helpers.ObjectHelper.getObjectHelper;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 import co.edu.uco.entity.DepartamentoEntity;
 import co.edu.uco.entity.PaisEntity;
@@ -36,8 +40,18 @@ public class DepartamentoAssemblerEntity implements  AssemblerEntity<Departament
 
 	@Override
 	public List<DepartamentoDomain> toDomainCollection(List<DepartamentoEntity> entityCollection) {
-		// TODO Auto-generated method stub
-		return null;
+		var entityCollectionTmp = ObjectHelper.getObjectHelper().getDefaultValue(entityCollection, new ArrayList<DepartamentoEntity>());
+		
+
+		return  entityCollectionTmp.stream().map(this::toDomain).toList();
+	}
+
+	@Override
+	public List<DepartamentoEntity> toEntityCollection(List<DepartamentoDomain> domainCollection) {
+		var entityCollectionTmp = ObjectHelper.getObjectHelper().getDefaultValue(domainCollection, new ArrayList<DepartamentoDomain>());
+		
+
+		return  entityCollectionTmp.stream().map(this::toEntity).toList();
 	}
 
 }

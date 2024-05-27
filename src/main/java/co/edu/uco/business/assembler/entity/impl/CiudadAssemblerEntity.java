@@ -42,15 +42,20 @@ public class CiudadAssemblerEntity implements AssemblerEntity<CiudadDomain, Ciud
 
 	@Override
 	public final List<CiudadDomain> toDomainCollection(final List<CiudadEntity> entityCollection) {
-		var entityCollectionTmp = ObjectHelper.getObjectHelper()
-				.getDefaultValue(entityCollection, new ArrayList<CiudadEntity>());
+		var entityCollectionTmp = ObjectHelper.getObjectHelper().getDefaultValue(entityCollection, new ArrayList<CiudadEntity>());
 		
 
-		return  entityCollectionTmp.stream()
-				.map(this::toDomain)
-				.toList();
+		return  entityCollectionTmp.stream().map(this::toDomain).toList();
 		
 
+	}
+
+	@Override
+	public List<CiudadEntity> toEntityCollection(List<CiudadDomain> domainCollection) {
+		var entityCollectionTmp = ObjectHelper.getObjectHelper().getDefaultValue(domainCollection, new ArrayList<CiudadDomain>());
+		
+
+		return  entityCollectionTmp.stream().map(this::toEntity).toList();
 	}
 	
 }
