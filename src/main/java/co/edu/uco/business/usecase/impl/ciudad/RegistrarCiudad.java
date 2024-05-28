@@ -8,6 +8,8 @@ import co.edu.uco.business.assembler.entity.impl.DepartamentoAssemblerEntity;
 import co.edu.uco.business.domain.CiudadDomain;
 import co.edu.uco.business.usecase.UseCaseWithOutReturn;
 import co.edu.uco.crosscutting.ecxeptions.custom.BusinessPCHException;
+import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalogStrategy;
+import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
@@ -23,8 +25,8 @@ public final class RegistrarCiudad implements UseCaseWithOutReturn<CiudadDomain>
 
 	public RegistrarCiudad(final DAOFactory factory) {
 		if (ObjectHelper.getObjectHelper().isNull(factory)) {
-			var mensajeUsuario = "se ha presentado un problema tratando de llevar a cabo el registro de la ciudad";
-			var mensajeTecnico = "el DAOfactoty para creear la ciudad llego nulo...";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00031);
 			throw new BusinessPCHException(mensajeTecnico, mensajeUsuario);
 		}
 		this.factory = factory;
@@ -66,7 +68,7 @@ public final class RegistrarCiudad implements UseCaseWithOutReturn<CiudadDomain>
 				.setDepartamento(DepartamentoEntity.build().setId(idDepartamento));
 		var resultados = factory.getCiudadDAO().consultar(ciudadEntity);
 		if (!resultados.isEmpty()) {
-			var mensajeUsuario = "ya existe una ciudad con el nombre \"${1}\"asociado al departamento";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00032);
 			throw new BusinessPCHException(mensajeUsuario);
 		}
 
@@ -75,19 +77,27 @@ public final class RegistrarCiudad implements UseCaseWithOutReturn<CiudadDomain>
 	private void validarDatos(final CiudadDomain data) {
 
 		if (TextHelper.isNull(data.getNombre())) {
-			throw new BusinessPCHException("El nombre de la ciudad es obligatorio.");
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00033);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00034);
+			throw new BusinessPCHException(mensajeUsuario,mensajeTecnico);
 		}
 
 		if (ObjectHelper.getObjectHelper().isNull(data.getDepartamento())) {
-			throw new BusinessPCHException("El departamento es obligatorio.");
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00035);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00036);
+			throw new BusinessPCHException(mensajeTecnico,mensajeUsuario);
 		}
 
 		if (data.getNombre().length() > MAX_LENGTH_NOMBRE_CIUDAD) {
-			throw new BusinessPCHException("El nombre de la ciudad excede la longitud máxima permitida.");
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00037);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00038);
+			throw new BusinessPCHException(mensajeTecnico,mensajeUsuario);
 		}
 
 		if (!isValidCityNameFormat(data.getNombre())) {
-			throw new BusinessPCHException("El formato del nombre de la ciudad es incorrecto.");
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00039);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00040);
+			throw new BusinessPCHException(mensajeTecnico,mensajeUsuario);
 		}
 	}
 

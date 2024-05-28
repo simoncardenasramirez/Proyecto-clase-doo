@@ -7,6 +7,8 @@ import co.edu.uco.business.facade.FacadeWithReturn;
 import co.edu.uco.business.usecase.impl.ciudad.ConsultarCiudades;
 import co.edu.uco.crosscutting.ecxeptions.PCHException;
 import co.edu.uco.crosscutting.ecxeptions.custom.BusinessPCHException;
+import co.edu.uco.crosscutting.ecxeptions.messageCatalog.MessageCatalogStrategy;
+import co.edu.uco.crosscutting.ecxeptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.data.dao.factory.DAOFactory;
 import co.edu.uco.dto.CiudadDTO;
 
@@ -39,8 +41,8 @@ public final class ConsultarCiudadesFacade implements FacadeWithReturn<CiudadDTO
 	            throw exception;
 	        }catch (final Exception exception){
 	            
-	            var mensajeUsuario = "Se ha presentado un porblema tratando de consultar la infomacion de la ciudad";
-	            var mensajeTecnico = "Se ha presentado un porblema inesperado tratando de consultar la informacion de las ciudadees";
+	            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje( CodigoMensaje.M00024);
+	            var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00025);
 
 	            throw new BusinessPCHException(mensajeTecnico, mensajeUsuario, exception);
 	            
